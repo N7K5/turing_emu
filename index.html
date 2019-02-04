@@ -1,0 +1,61 @@
+ 
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <script language="javascript" type="text/javascript" src="turing.js"></script>
+      <script language="javascript" type="text/javascript" src="main.js"></script>
+      <style>
+        @font-face {
+          font-family: terminal;
+          src: url("res/terminal.ttf");
+        }
+        .results {
+          font-family: "Courier";
+        }
+        #ip_frame {
+          position: fixed;
+          bottom:15px;
+          right: 15px;
+          background-color: #bf8040;
+          border:solid;
+          border-color: #af7030;
+          border-radius: 10px;
+          width:300px;
+          height: 200px;
+          font-family: terminal;
+          text-align: center;
+          box-shadow:#999 10px 10px 8px;
+        }
+        #ip_submit {
+          position:absolute;
+          bottom:10px;
+          right: 20px;
+          display: inline-block;
+          padding: 5px 15px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          outline: none;
+          color: #fff;
+          background-color: #009933;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0 4px #777;
+        }
+        #ip_submit:hover {background-color: #00802b}
+        #ip_submit:active {
+          background-color: #006622;
+          box-shadow: 0 1px #777;
+          transform: translateY(3px);
+        }
+      </style>
+    </head>
+    
+    <body>
+      <div id="ip_frame">
+        <p id="ip_title">Do Something</p>
+        <div id="ip_inputs"></div>
+        <button id="ip_submit">okay</button>
+      </div>
+    </body>
+    </html>
