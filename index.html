@@ -21,12 +21,12 @@
           border-color: #af7030;
           border-radius: 10px;
           width:300px;
-          height: 200px;
+          height: 150px;
           font-family: terminal;
           text-align: center;
           box-shadow:#999 10px 10px 8px;
         }
-        #ip_submit {
+        #ip_submit, #ip_set_str {
           position:absolute;
           bottom:10px;
           right: 20px;
@@ -43,10 +43,35 @@
           box-shadow: 0 4px #777;
         }
         #ip_submit:hover {background-color: #00802b}
-        #ip_submit:active {
+        #ip_submit:active, #ip_set_str:active {
           background-color: #006622;
           box-shadow: 0 1px #777;
           transform: translateY(3px);
+        }
+        #ip_set_str {
+          position:absolute;
+          bottom:10px;
+          left: 20px;
+          background-color: #92100c;
+          display: none;
+        }
+        #ip_set_str:active {
+          background-color: #550a07;
+        }
+        input {
+          padding: 5px;
+          font-family: terminal;
+          font-size: 110%;
+          border-radius: 10px;
+          width:80%;
+          background-color: #e2c2a2;
+          border:solid;
+          border-color: #8b5218;
+        }
+        input:focus {
+          outline: 0;
+          border-color: #5a3107;
+          background-color: #ca9f75;
         }
       </style>
     </head>
@@ -54,7 +79,8 @@
     <body>
       <div id="ip_frame">
         <p id="ip_title">Do Something</p>
-        <div id="ip_inputs"></div>
+        <div id="ip_inputs"><input type="text" id="ip_1"></div>
+        <button id="ip_set_str">Set String</button>
         <button id="ip_submit">okay</button>
       </div>
     </body>

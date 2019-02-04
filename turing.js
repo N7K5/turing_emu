@@ -1,5 +1,5 @@
 
-class turing {
+class Turing {
 
     constructor(state, sigma, _initialState, _finalStates ) {
         this.states= state.split(",");
@@ -16,14 +16,14 @@ class turing {
     setGrammar (currentState, read, nextState, write, move ) {
 
         if(this.states.indexOf(currentState)<0 || this.states.indexOf(nextState)<0) {
-            throw new Exception("State Not Found...");
+            throw new String("State Not Found...");
         }
         if((this.alphas.indexOf(read)<0 || this.alphas.indexOf(write)<0) 
             && read!="BLANK" && write!= "BLANK") {
-            throw new Exception("Input Alphabet Not Found...");
+            throw new String("Input Alphabet Not Found...");
         }
         if(move !="L" && move !="R" && move !="l" && move !="r") {
-            throw new Exception("only (L)eft and (R)ight moves are valid...");
+            throw new String("only (L)eft and (R)ight moves are valid...");
         }
 
         if(!this.findNext(currentState, read)) {
@@ -36,7 +36,7 @@ class turing {
             });
             return true;
         } else {
-            throw new Exception("Invalid Grammer...");
+            throw new String("Invalid Grammer...");
         }
 
     }
@@ -53,7 +53,7 @@ class turing {
     setString(str) {
         for(let i=0; i<str.length; i++) {
             if(this.alphas.indexOf(str.charAt(i))<0) {
-                throw new Exception("Invalid Character in input");
+                throw new String("Invalid Character in input");
             }
         }
         this.string= str.split("");
