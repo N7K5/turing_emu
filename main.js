@@ -1,11 +1,20 @@
  
+ let ctx= null, cv, machineImg, machineImgLoaded= false;
+ 
 
-function createCanvas(cv) {
+function createCanvas() {
     cv = document.createElement('canvas');
     cv.id= "canvas";
     cv.width= window.innerWidth-20;
     cv.height= window.innerHeight-20;
     document.body.appendChild(cv);
+    ctx = cv.getContext("2d");
+    machineImg= new Image();
+    machineImg.onload= () => {
+        machineImgLoaded= true;
+        draw_machine(-30, 100, cv.width/2, 10, "aaabbbab", 2);
+    }
+    machineImg.src="res/machine.png";
     return cv;
 }
 
@@ -111,6 +120,8 @@ function main() {
         ip_submit.removeEventListener("click", init);
         ip_submit.addEventListener("click", start_tm, false);
     }, false);
+
+    show();
 }
 
 
@@ -118,4 +129,43 @@ function main() {
 
 function start_tm() {
     console.log(TM.move());
+}
+
+
+function show() {
+
+        //draw_machine(-30, 100, cv.width, 10, "aaabbbab", 5);
+}
+
+function draw_machine(tx, ty, mx, my, str, index) {
+
+    ctx.clearRect(0, 0, cv.width, cv.height);
+
+    ctx.fillStyle="#AAAAAA";
+    let tapeWidth= 70;
+    for(let i=0; i<cv.width; i+=tapeWidth) {
+        ctx.fillRect(tx+5+i, ty, tapeWidth-10, 50);
+    }
+    ctx.fillStyle="#666666";
+    ctx.rect(0, ty-2, cv.width, 54);
+    ctx.stroke();
+
+    if(machineImgLoaded) {
+        ctx.drawImage(machineImg, mx, my, 70, 70);
+    }
+
+    let xy= ty+30;
+    ctx.textAlign = "center";
+    ctx.font= "30px terminal";
+    ctx.fillStyle= "#000000";
+    for(let i=0; i<str.length; i++) {
+        if(str[i]== "BLANK") {
+            continue;
+        }
+        let xx= ((cv.width/2)+ ((i-index)*tapeWidth))+ tapeWidth/2+ tx%tapeWidth+ 20;
+        ctx.fillText(str[i], xx, xy);
+        // break;
+    }
+
+
 }
